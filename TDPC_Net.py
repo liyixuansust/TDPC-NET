@@ -201,9 +201,9 @@ def conv_trans_block_3d(in_dim, out_dim, activation):
         nn.ConvTranspose3d(in_dim, out_dim, kernel_size=3, stride=2, padding=1, output_padding=1),
         nn.BatchNorm3d(out_dim),
         activation)
-class APHDC_Net(nn.Module):
+class TDPC_Net(nn.Module):
     def __init__(self, in_dim=4, out_dim=4, num_filters=32):
-        super(APHDC_Net, self).__init__()
+        super(TDPC_Net, self).__init__()
         self.in_dim = in_dim
         self.out_dim = out_dim
         self.n_f = num_filters
@@ -260,7 +260,7 @@ if __name__ == '__main__':
     device = torch.device('cuda')
     image_size = 128
     x = torch.rand((1, 4, 128, 128, 128), device=device) 
-    model = APHDC_Net(in_dim=4, out_dim=4, num_filters=32).to(device)
+    model = TDPC_Net(in_dim=4, out_dim=4, num_filters=32).to(device)
     y = model(x)
    
     
